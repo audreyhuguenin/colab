@@ -29,7 +29,7 @@ public class SampleTestData {
 
     private Long cardWithGlobalTypeId;
     private Long cardContentWithGlobalTypeId;
-    private Long subCardWitchGlobalTypeId;
+    private Long subCardWithGlobalTypeId;
 
     private Long localCardTypeId;
 
@@ -44,8 +44,21 @@ public class SampleTestData {
     private Long cardContentWithFriendTypeId;
     private Long subCardWithSameFriendTypeId;
 
-    private Long deliverableDocumentId;
-    private Long deliverableBlockId;
+    private Long deliverableDocumentOnCardOfGlobalCardTypeId;
+    private Long deliverableBlockOnCardOfGlobalCardTypeId;
+
+    // TODO deliverable ExternalLink to check
+
+    private Long resourceOnPublishedGlobalCardTypeId;
+    private Long resourceOnPublishedGlobalCardTypeRefId;
+
+    private Long resourceOnTheProjectRootCardId;
+    private Long resourceOnTheProjectRootCardContentId;
+
+    private Long resourceOnCardWithGlobalTypeId;
+    private Long resourceOnCardContentWithGlobalTypeId;
+    private Long resourceOnSubCardWithGlobalTypeId;
+
 
 
     private Long thirdCardId;
@@ -97,32 +110,63 @@ public class SampleTestData {
             .getId();
         publishedGlobalCardTypeRefId = cardWithGlobalType.getCardTypeId();
 
-        subCardWitchGlobalTypeId = ColabFactory
+        subCardWithGlobalTypeId = ColabFactory
             .createNewCard(client, cardContentWithGlobalTypeId, publishedGlobalCardTypeId).getId();
 
         localCardTypeId = ColabFactory.createCardType(client, theProjectId).getId();
 
         cardWithLocalTypeId = ColabFactory.createNewCard(client, rootCardContentId, localCardTypeId)
             .getId();
-        cardContentWithLocalTypeId = ColabFactory.getCardContent(client, cardWithLocalTypeId).getId();
+        cardContentWithLocalTypeId = ColabFactory.getCardContent(client, cardWithLocalTypeId)
+            .getId();
 
         subCardWithSameLocalTypeId = ColabFactory
             .createNewCard(client, cardContentWithLocalTypeId, localCardTypeId).getId();
 
-        friendCardTypeId = ColabFactory.createCardType(client,  friendProjectId).getId();
+        friendCardTypeId = ColabFactory.createCardType(client, friendProjectId).getId();
 
-        Card cardWithFriendType = ColabFactory.createNewCard(client, rootCardContentId, friendCardTypeId);
+        Card cardWithFriendType = ColabFactory.createNewCard(client, rootCardContentId,
+            friendCardTypeId);
         cardWithFriendTypeId = cardWithFriendType.getId();
-        cardContentWithFriendTypeId = ColabFactory.getCardContent(client, cardWithFriendTypeId).getId();
+        cardContentWithFriendTypeId = ColabFactory.getCardContent(client, cardWithFriendTypeId)
+            .getId();
         friendCardTypeRefId = cardWithFriendType.getCardTypeId();
 
-        subCardWithSameFriendTypeId = ColabFactory.createNewCard(client, cardContentWithFriendTypeId, friendCardTypeId).getId();
+        subCardWithSameFriendTypeId = ColabFactory
+            .createNewCard(client, cardContentWithFriendTypeId, friendCardTypeId).getId();
 
-        deliverableDocumentId = ColabFactory.assignNewBlockDocumentDeliverable(client, cardContentWithLocalTypeId).getId();
-        deliverableBlockId = ColabFactory.addBlockToDocument(client, deliverableDocumentId).getId();
+        deliverableDocumentOnCardOfGlobalCardTypeId = ColabFactory
+            .assignNewBlockDocumentDeliverable(client, cardContentWithGlobalTypeId).getId();
+        deliverableBlockOnCardOfGlobalCardTypeId = ColabFactory
+            .addBlockToDocument(client, deliverableDocumentOnCardOfGlobalCardTypeId).getId();
 
+//        resourceOnUnpublishedGlobalCardTypeId = ColabFactory.createCardTypeResource(client, unpublishedGlobalCardTypeId);
+        resourceOnPublishedGlobalCardTypeId = ColabFactory.createCardTypeResource(client, publishedGlobalCardTypeId);
 
+        resourceOnTheProjectRootCardId = ColabFactory.createCardResource(client, theProject.getRootCardId());
+        resourceOnTheProjectRootCardContentId = ColabFactory.createCardContentResource(client, rootCardContentId);
 
+//        resourceOnFriendProjectRootCardId = ColabFactory.createCardTypeResource(client, friendProject.getRootCardId());
+//        resourceOnAnotherProjectRootCardId = ColabFactory.createCardTypeResource(client, anotherProject.getRootCardId());
+
+        resourceOnPublishedGlobalCardTypeRefId = ColabFactory.createCardTypeResource(client, publishedGlobalCardTypeRefId);
+
+        resourceOnCardWithGlobalTypeId = ColabFactory.createCardResource(client, cardWithGlobalTypeId);
+        resourceOnCardContentWithGlobalTypeId = ColabFactory.createCardContentResource(client, cardContentWithGlobalTypeId);
+        resourceOnSubCardWithGlobalTypeId = ColabFactory.createCardResource(client, subCardWithGlobalTypeId);
+//
+//        resourceOnLocalCardTypeId = ColabFactory.createCardTypeResource(client, localCardTypeId);
+//
+//        resourceOnCardWithLocalTypeId = ColabFactory.createCardResource(client, cardWithLocalTypeId);
+//        resourceOnCardContentWithLocalTypeId = ColabFactory.createCardContentResource(client, cardContentWithLocalTypeId);
+//        resourceOnSubCardWithSameLocalTypeId = ColabFactory.createCardResource(client, subCardWithSameLocalTypeId);
+//
+//        resourceOnFriendCardTypeId = ColabFactory.createCardTypeResource(client, friendCardTypeId);
+//        resourceOnFriendCardTypeRefId = ColabFactory.createCardTypeResource(client, friendCardTypeRefId);
+//
+//        resourceOnCardWithFriendTypeId = ColabFactory.createCardResource(client, cardWithFriendTypeId);
+//        resourceOnCardContentWithFriendTypeId = ColabFactory.createCardContentResource(client, cardContentWithFriendTypeId);
+//        resourceOnSubCardWithSameFriendTypeId = ColabFactory.createCardResource(client, subCardWithSameFriendTypeId);
 
         Resource resourceOnGlobalType = ColabFactory.createCardTypeResourceBlockDoc(client,
             publishedGlobalCardTypeId, "Mastering ACL");
@@ -209,10 +253,17 @@ public class SampleTestData {
     }
 
     /**
+     * @return a card content id
+     */
+    public Long getCardContentWithGlobalTypeId() {
+        return cardContentWithGlobalTypeId;
+    }
+
+    /**
      * @return the sub card with global type id
      */
     public Long getSubCardWithGlobalTypeId() {
-        return subCardWitchGlobalTypeId;
+        return subCardWithGlobalTypeId;
     }
 
     /**
@@ -268,14 +319,14 @@ public class SampleTestData {
      * @return a card id
      */
     public Long getCardId() {
-        return cardWithLocalTypeId;
+        return cardWithGlobalTypeId;
     }
 
     /**
      * @return a card content id
      */
     public Long getCardContentId() {
-        return cardContentWithLocalTypeId;
+        return cardContentWithGlobalTypeId;
     }
 
     /**
@@ -289,17 +340,92 @@ public class SampleTestData {
      * @return a deliverable document
      */
     public Long getDeliverableDocumentId() {
-        return deliverableDocumentId;
+        return deliverableDocumentOnCardOfGlobalCardTypeId;
     }
 
     /**
      * @return a block of a deliverable document
      */
     public Long getDeliverableBlockId() {
-        return deliverableBlockId;
+        return deliverableBlockOnCardOfGlobalCardTypeId;
     }
 
+    /**
+     * @return a deliverable document
+     */
+    public Long getDeliverableDocumentOnCardOfGlobalCardTypeId() {
+        return deliverableDocumentOnCardOfGlobalCardTypeId;
+    }
 
+    /**
+     * @return a block of a deliverable document
+     */
+    public Long getDeliverableBlockOnCardOfGlobalCardTypeId() {
+        return deliverableBlockOnCardOfGlobalCardTypeId;
+    }
+
+    /**
+     * @return the resourceOnPublishedGlobalCardTypeId
+     */
+    public Long getResourceOnPublishedGlobalCardTypeId() {
+        return resourceOnPublishedGlobalCardTypeId;
+    }
+
+    /**
+     * @return the resourceOnPublishedGlobalCardTypeRefId
+     */
+    public Long getResourceOnPublishedGlobalCardTypeRefId() {
+        return resourceOnPublishedGlobalCardTypeRefId;
+    }
+
+    /**
+     * @return the resourceOnTheProjectRootCardId
+     */
+    public Long getResourceOnTheProjectRootCardId() {
+        return resourceOnTheProjectRootCardId;
+    }
+
+    /**
+     * @return the resourceOnTheProjectRootCardId
+     */
+    public Long getResourceOnTheProjectRootCardContentId() {
+        return resourceOnTheProjectRootCardContentId;
+    }
+
+    /**
+     * @return the resourceOnCardWithGlobalTypeId
+     */
+    public Long getResourceOnCardWithGlobalTypeId() {
+        return resourceOnCardWithGlobalTypeId;
+    }
+
+    /**
+     * @return the resourceOnCardContentWithGlobalTypeId
+     */
+    public Long getResourceOnCardContentWithGlobalTypeId() {
+        return resourceOnCardContentWithGlobalTypeId;
+    }
+
+    /**
+     * @return the resourceOnSubCardWithGlobalTypeId
+     */
+    public Long getResourceOnSubCardWithGlobalTypeId() {
+        return resourceOnSubCardWithGlobalTypeId;
+    }
+
+    /**
+     * @return the resourceOnGlobalTypeId
+     */
+    public Long getResourceOnGlobalTypeId() {
+        return resourceOnGlobalTypeId;
+    }
+
+    /**
+     * @return the resourceOnLocalTypeId
+     */
+    public Long getResourceOnLocalTypeId() {
+        return resourceOnLocalTypeId;
+    }
 
     /**
      * @return the globalCardTypeId

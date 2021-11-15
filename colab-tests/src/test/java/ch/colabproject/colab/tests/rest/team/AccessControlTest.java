@@ -75,6 +75,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasCardReadWriteAccess());
         Assertions.assertFalse(hasCardContentReadAccess());
         Assertions.assertFalse(hasCardContentReadWriteAccess());
+        Assertions.assertFalse(hasSubCardReadAccess());
+        Assertions.assertFalse(hasSubCardReadWriteAccess());
 
         Assertions.assertFalse(hasGlobalCardTypeRefReadAccess());
         Assertions.assertFalse(hasGlobalCardTypeRefReadWriteAccess());
@@ -96,6 +98,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertFalse(hasDeliverableBlockReadAccess());
         Assertions.assertFalse(hasDeliverableBlockReadWriteAccess());
+
+        //TODO Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //        Assertions.assertTrue(hasGlobalResourceReadAccess());
 //        Assertions.assertFalse(hasGlobalResourceReadWriteAccess());
@@ -129,6 +146,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasCardReadWriteAccess());
         Assertions.assertTrue(hasCardContentReadAccess());
         Assertions.assertTrue(hasCardContentReadWriteAccess());
+        Assertions.assertTrue(hasSubCardReadAccess());
+        Assertions.assertTrue(hasSubCardReadWriteAccess());
 
         Assertions.assertTrue(hasGlobalCardTypeRefReadAccess());
         Assertions.assertTrue(hasGlobalCardTypeRefReadWriteAccess());
@@ -150,6 +169,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertTrue(hasDeliverableBlockReadAccess());
         Assertions.assertTrue(hasDeliverableBlockReadWriteAccess());
+
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //        Assertions.assertTrue(hasLocalResourceReadAccess());
 //        Assertions.assertTrue(hasLocalResourceReadWriteAccess());
@@ -182,6 +216,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasCardReadWriteAccess());
         Assertions.assertFalse(hasCardContentReadAccess());
         Assertions.assertFalse(hasCardContentReadWriteAccess());
+        Assertions.assertFalse(hasSubCardReadAccess());
+        Assertions.assertFalse(hasSubCardReadWriteAccess());
 
         Assertions.assertFalse(hasGlobalCardTypeRefReadAccess());
         Assertions.assertFalse(hasGlobalCardTypeRefReadWriteAccess());
@@ -203,6 +239,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertFalse(hasDeliverableBlockReadAccess());
         Assertions.assertFalse(hasDeliverableBlockReadWriteAccess());
+
+        //TODOAssertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //        Assertions.assertFalse(hasLocalResourceReadAccess());
 //        Assertions.assertFalse(hasLocalResourceReadWriteAccess());
@@ -241,6 +292,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasCardReadWriteAccess());
         Assertions.assertTrue(hasCardContentReadAccess());
         Assertions.assertTrue(hasCardContentReadWriteAccess());
+        Assertions.assertTrue(hasSubCardReadAccess());
+        Assertions.assertTrue(hasSubCardReadWriteAccess());
 
         Assertions.assertTrue(hasGlobalCardTypeRefReadAccess());
         Assertions.assertTrue(hasGlobalCardTypeRefReadWriteAccess());
@@ -262,6 +315,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertTrue(hasDeliverableBlockReadAccess());
         Assertions.assertTrue(hasDeliverableBlockReadWriteAccess());
+
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //        Assertions.assertTrue(hasLocalResourceReadAccess());
 //        Assertions.assertTrue(hasLocalResourceReadWriteAccess());
@@ -295,6 +363,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasCardReadWriteAccess());
         Assertions.assertTrue(hasCardContentReadAccess());
         Assertions.assertFalse(hasCardContentReadWriteAccess());
+        Assertions.assertTrue(hasSubCardReadAccess());
+        Assertions.assertFalse(hasSubCardReadWriteAccess());
 
         Assertions.assertTrue(hasGlobalCardTypeRefReadAccess());
         Assertions.assertFalse(hasGlobalCardTypeRefReadWriteAccess());
@@ -316,6 +386,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertFalse(hasDeliverableBlockReadAccess());
         Assertions.assertFalse(hasDeliverableBlockReadWriteAccess());
+
+        //Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+//        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //        Assertions.assertFalse(hasLocalResourceReadAccess());
 //        Assertions.assertFalse(hasLocalResourceReadWriteAccess());
@@ -350,6 +435,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasCardReadWriteAccess());
         Assertions.assertTrue(hasCardContentReadAccess());
         Assertions.assertFalse(hasCardContentReadWriteAccess());
+        Assertions.assertTrue(hasSubCardReadAccess());
+        Assertions.assertFalse(hasSubCardReadWriteAccess());
 
         Assertions.assertTrue(hasGlobalCardTypeRefReadAccess());
         Assertions.assertFalse(hasGlobalCardTypeRefReadWriteAccess());
@@ -371,6 +458,22 @@ public class AccessControlTest extends AbstractArquillianTest {
         //Assertions.assertFalse(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertTrue(hasDeliverableBlockReadAccess());
         Assertions.assertFalse(hasDeliverableBlockReadWriteAccess());
+
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+//        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+
 
 //        Assertions.assertTrue(hasLocalResourceReadAccess());
 //        Assertions.assertFalse(hasLocalResourceReadWriteAccess());
@@ -405,6 +508,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasCardReadWriteAccess());
         Assertions.assertTrue(hasCardContentReadAccess());
         Assertions.assertTrue(hasCardContentReadWriteAccess());
+        Assertions.assertTrue(hasSubCardReadAccess());
+        Assertions.assertTrue(hasSubCardReadWriteAccess());
 
         Assertions.assertTrue(hasGlobalCardTypeRefReadAccess());
         Assertions.assertFalse(hasGlobalCardTypeRefReadWriteAccess());
@@ -426,6 +531,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertTrue(hasDeliverableBlockReadAccess());
         Assertions.assertTrue(hasDeliverableBlockReadWriteAccess());
+
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+//        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+//        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //        Assertions.assertFalse(hasLocalResourceReadAccess());
 //        Assertions.assertFalse(hasLocalResourceReadWriteAccess());
@@ -460,6 +580,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasCardReadWriteAccess());
         Assertions.assertTrue(hasCardContentReadAccess());
         Assertions.assertFalse(hasCardContentReadWriteAccess());
+        Assertions.assertTrue(hasSubCardReadAccess());
+        Assertions.assertFalse(hasSubCardReadWriteAccess());
 
         Assertions.assertTrue(hasGlobalCardTypeRefReadAccess());
         Assertions.assertFalse(hasGlobalCardTypeRefReadWriteAccess());
@@ -481,6 +603,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertFalse(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertFalse(hasDeliverableBlockReadAccess());
         Assertions.assertFalse(hasDeliverableBlockReadWriteAccess());
+
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //      Assertions.assertFalse(hasLocalResourceReadAccess());
 //      Assertions.assertFalse(hasLocalResourceReadWriteAccess());
@@ -514,6 +651,8 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasCardReadWriteAccess());
         Assertions.assertTrue(hasCardContentReadAccess());
         Assertions.assertTrue(hasCardContentReadWriteAccess());
+        Assertions.assertTrue(hasSubCardReadAccess());
+        Assertions.assertTrue(hasSubCardReadWriteAccess());
 
         Assertions.assertTrue(hasGlobalCardTypeRefReadAccess());
         Assertions.assertTrue(hasGlobalCardTypeRefReadWriteAccess());
@@ -535,6 +674,21 @@ public class AccessControlTest extends AbstractArquillianTest {
         Assertions.assertTrue(hasDeliverableDocumentReadWriteAccess());
         Assertions.assertTrue(hasDeliverableBlockReadAccess());
         Assertions.assertTrue(hasDeliverableBlockReadWriteAccess());
+
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertFalse(hasResourceReadWriteAccess(data.getResourceOnGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnPublishedGlobalCardTypeRefId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnTheProjectRootCardContentId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnCardContentWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadAccess(data.getResourceOnSubCardWithGlobalTypeId()));
+        Assertions.assertTrue(hasResourceReadWriteAccess(data.getResourceOnSubCardWithGlobalTypeId()));
 
 //    Assertions.assertTrue(hasLocalResourceReadAccess());
 //    Assertions.assertTrue(hasLocalResourceReadWriteAccess());
@@ -689,7 +843,7 @@ public class AccessControlTest extends AbstractArquillianTest {
 
     private boolean hasCardReadAccess() {
         try {
-            aclTestClient.cardRestEndpoint.getCard(data.getCardId());
+            aclTestClient.cardRestEndpoint.getCard(data.getCardWithGlobalTypeId());
             return true;
         } catch (HttpErrorMessage hem) {
             if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
@@ -702,11 +856,11 @@ public class AccessControlTest extends AbstractArquillianTest {
 
     private boolean hasCardReadWriteAccess() {
         try {
-            Card aCard = aclTestClient.cardRestEndpoint.getCard(data.getCardId());
+            Card aCard = aclTestClient.cardRestEndpoint.getCard(data.getCardWithGlobalTypeId());
             aCard.setColor("black");
             aclTestClient.cardRestEndpoint.updateCard(aCard);
 
-            aCard = aclTestClient.cardRestEndpoint.getCard(data.getCardId());
+            aCard = aclTestClient.cardRestEndpoint.getCard(data.getCardWithGlobalTypeId());
             aCard.setColor("orange");
             aclTestClient.cardRestEndpoint.updateCard(aCard);
 
@@ -722,7 +876,7 @@ public class AccessControlTest extends AbstractArquillianTest {
 
     private boolean hasCardContentReadAccess() {
         try {
-            aclTestClient.cardContentRestEndpoint.getCardContent(data.getCardContentId());
+            aclTestClient.cardContentRestEndpoint.getCardContent(data.getCardContentWithGlobalTypeId());
             return true;
         } catch (HttpErrorMessage hem) {
             if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
@@ -736,12 +890,12 @@ public class AccessControlTest extends AbstractArquillianTest {
     private boolean hasCardContentReadWriteAccess() {
         try {
             CardContent cardContent = aclTestClient.cardContentRestEndpoint
-                .getCardContent(data.getCardContentId());
+                .getCardContent(data.getCardContentWithGlobalTypeId());
             cardContent.setCompletionLevel(80);
             aclTestClient.cardContentRestEndpoint.updateCardContent(cardContent);
 
             cardContent = aclTestClient.cardContentRestEndpoint
-                .getCardContent(data.getCardContentId());
+                .getCardContent(data.getCardContentWithGlobalTypeId());
             cardContent.setCompletionLevel(95);
             aclTestClient.cardContentRestEndpoint.updateCardContent(cardContent);
 
@@ -752,6 +906,39 @@ public class AccessControlTest extends AbstractArquillianTest {
             }
         }
         Assertions.fail("Problem checking card content read/write access");
+        return false;
+    }
+
+    private boolean hasSubCardReadAccess() {
+        try {
+            aclTestClient.cardRestEndpoint.getCard(data.getSubCardWithGlobalTypeId());
+            return true;
+        } catch (HttpErrorMessage hem) {
+            if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
+                return false;
+            }
+        }
+        Assertions.fail("Problem checking card read access");
+        return false;
+    }
+
+    private boolean hasSubCardReadWriteAccess() {
+        try {
+            Card aCard = aclTestClient.cardRestEndpoint.getCard(data.getSubCardWithGlobalTypeId());
+            aCard.setColor("black");
+            aclTestClient.cardRestEndpoint.updateCard(aCard);
+
+            aCard = aclTestClient.cardRestEndpoint.getCard(data.getSubCardWithGlobalTypeId());
+            aCard.setColor("orange");
+            aclTestClient.cardRestEndpoint.updateCard(aCard);
+
+            return true;
+        } catch (HttpErrorMessage hem) {
+            if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
+                return false;
+            }
+        }
+        Assertions.fail("Problem checking card read/write access");
         return false;
     }
 
@@ -810,13 +997,13 @@ public class AccessControlTest extends AbstractArquillianTest {
             AbstractCardType abstractCardType = aclTestClient.cardTypeRestEndpoint
                 .getCardType(data.getLocalCardTypeId());
             CardType cardType = (CardType) abstractCardType;
-            cardType.setTitle("design");
+            cardType.setTitle("local card type - design");
             aclTestClient.cardTypeRestEndpoint.updateCardType(cardType);
 
             abstractCardType = aclTestClient.cardTypeRestEndpoint
                 .getCardType(data.getLocalCardTypeId());
             cardType = (CardType) abstractCardType;
-            cardType.setTitle("design improvement");
+            cardType.setTitle("local card type - design improvement");
             aclTestClient.cardTypeRestEndpoint.updateCardType(cardType);
 
             return true;
@@ -847,13 +1034,13 @@ public class AccessControlTest extends AbstractArquillianTest {
             AbstractCardType abstractCardType = aclTestClient.cardTypeRestEndpoint
                 .getCardType(data.getFriendCardTypeId());
             CardType cardType = (CardType) abstractCardType;
-            cardType.setTitle("design");
+            cardType.setTitle("friend - design");
             aclTestClient.cardTypeRestEndpoint.updateCardType(cardType);
 
             abstractCardType = aclTestClient.cardTypeRestEndpoint
                 .getCardType(data.getFriendCardTypeId());
             cardType = (CardType) abstractCardType;
-            cardType.setTitle("design improvement");
+            cardType.setTitle("friend - design improvement");
             aclTestClient.cardTypeRestEndpoint.updateCardType(cardType);
 
             return true;
@@ -971,14 +1158,14 @@ public class AccessControlTest extends AbstractArquillianTest {
 
     private boolean hasDeliverableDocumentReadAccess() {
         try {
-            aclTestClient.documentRestEndPoint.getDocument(data.getDeliverableDocumentId());
+            aclTestClient.documentRestEndPoint.getDocument(data.getDeliverableDocumentOnCardOfGlobalCardTypeId());
             return true;
         } catch (HttpErrorMessage hem) {
             if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
                 return false;
             }
         }
-        Assertions.fail("Problem checking deliverable document read/write access");
+        Assertions.fail("Problem checking deliverable document read access");
         return false;
     }
 
@@ -986,12 +1173,12 @@ public class AccessControlTest extends AbstractArquillianTest {
         try {
             // TODO find another way
             Document document = aclTestClient.documentRestEndPoint
-                .getDocument(data.getDeliverableDocumentId());
+                .getDocument(data.getDeliverableDocumentOnCardOfGlobalCardTypeId());
             //document.setTeaser("incredible");
             aclTestClient.documentRestEndPoint.updateDocument(document);
 
             document = aclTestClient.documentRestEndPoint
-                .getDocument(data.getDeliverableDocumentId());
+                .getDocument(data.getDeliverableDocumentOnCardOfGlobalCardTypeId());
             //document.setTeaser("awesome");
             aclTestClient.documentRestEndPoint.updateDocument(document);
 
@@ -1007,24 +1194,24 @@ public class AccessControlTest extends AbstractArquillianTest {
 
     private boolean hasDeliverableBlockReadAccess() {
         try {
-            aclTestClient.blockRestEndPoint.getBlock(data.getDeliverableBlockId());
+            aclTestClient.blockRestEndPoint.getBlock(data.getDeliverableBlockOnCardOfGlobalCardTypeId());
             return true;
         } catch (HttpErrorMessage hem) {
             if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
                 return false;
             }
         }
-        Assertions.fail("Problem checking deliverable block read/write access");
+        Assertions.fail("Problem checking deliverable block read access");
         return false;
     }
 
     private boolean hasDeliverableBlockReadWriteAccess() {
         try {
-            Block block = aclTestClient.blockRestEndPoint.getBlock(data.getDeliverableBlockId());
+            Block block = aclTestClient.blockRestEndPoint.getBlock(data.getDeliverableBlockOnCardOfGlobalCardTypeId());
             block.setIndex(5);
             aclTestClient.blockRestEndPoint.updateBlock(block);
 
-            block = aclTestClient.blockRestEndPoint.getBlock(data.getDeliverableBlockId());
+            block = aclTestClient.blockRestEndPoint.getBlock(data.getDeliverableBlockOnCardOfGlobalCardTypeId());
             block.setIndex(7);
             aclTestClient.blockRestEndPoint.updateBlock(block);
 
@@ -1035,6 +1222,39 @@ public class AccessControlTest extends AbstractArquillianTest {
             }
         }
         Assertions.fail("Problem checking deliverable block read/write access");
+        return false;
+    }
+
+    private boolean hasResourceReadAccess(Long resourceId) {
+        try {
+            aclTestClient.resourceRestEndpoint.getAbstractResource(resourceId);
+            return true;
+        } catch (HttpErrorMessage hem) {
+            if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
+                return false;
+            }
+        }
+        Assertions.fail("Problem checking resource #" + resourceId  + " read access");
+        return false;
+    }
+
+    private boolean hasResourceReadWriteAccess(Long resourceId) {
+        try {
+            Resource resource = (Resource) aclTestClient.resourceRestEndpoint.getAbstractResource(resourceId);
+            resource.setCategory("one");
+            aclTestClient.resourceRestEndpoint.updateResource(resource);
+
+            resource = (Resource) aclTestClient.resourceRestEndpoint.getAbstractResource(resourceId);
+            resource.setCategory("two");
+            aclTestClient.resourceRestEndpoint.updateResource(resource);
+
+            return true;
+        } catch (HttpErrorMessage hem) {
+            if (MessageCode.ACCESS_DENIED == hem.getMessageCode()) {
+                return false;
+            }
+        }
+        Assertions.fail("Problem checking resource #" + resourceId  + " read/write access");
         return false;
     }
 

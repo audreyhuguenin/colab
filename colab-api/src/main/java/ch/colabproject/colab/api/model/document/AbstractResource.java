@@ -23,6 +23,7 @@ import ch.colabproject.colab.generator.model.tools.PolymorphicDeserializer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.json.bind.annotation.JsonbTypeDeserializer;
 import javax.persistence.CascadeType;
@@ -366,6 +367,20 @@ public abstract class AbstractResource
      */
     public abstract List<AbstractResource> expand();
 
+    /**
+     * Retrieve the complete transitive set of references to this abstract resource.
+     *
+     * @return all references
+     */
+    @JsonbTransient
+    public List<ResourceRef> getAllReferences() {
+        List<ResourceRef> all = new ArrayList<>();
+        all.addAll(this.directReferences);
+        this.directReferences.stream().forEach(ref -> all.addAll(ref.getAllReferences()));
+
+        return all;
+    }
+
     @Override
     public void merge(ColabEntity other) throws ColabMergeException {
         if (other instanceof AbstractResource) {
@@ -377,8 +392,7 @@ public abstract class AbstractResource
     }
 
     @JsonbTransient
-    @Override
-    public Conditions.Condition getReadCondition() {
+    public Conditions.Condition getSelfReadCondition() {
         if (this.abstractCardType != null) {
             // the abstract resource is linked to a card type / card type reference
             return this.abstractCardType.getReadCondition();
@@ -387,11 +401,28 @@ public abstract class AbstractResource
             return new Conditions.HasCardReadRight(this.card);
         } else if (this.cardContent != null) {
             // the abstract resource is linked to a card content
-            return this.cardContent.getReadCondition();
+            return new Conditions.HasCardReadRight(this.cardContent);
         } else {
             // such an orphan shouldn't exist...
             return Conditions.defaultForOrphan;
         }
+    }
+
+    @JsonbTransient
+    @Override
+    public Conditions.Condition getReadCondition() {
+        List<Conditions.Condition> orList = new ArrayList<>();
+
+        orList.add(this.getSelfReadCondition());
+//        orList.add(this.getSelfReadCondition());
+
+//        orList.addAll(this.expand().stream()
+//            .map(ref -> ref.getSelfReadCondition()).collect(Collectors.toList()));
+//
+        orList.addAll(this.getAllReferences().stream()
+            .map(ref -> ref.getSelfReadCondition()).collect(Collectors.toList()));
+
+        return new Conditions.Or(orList.toArray(new Conditions.Condition[orList.size()]));
     }
 
     @Override

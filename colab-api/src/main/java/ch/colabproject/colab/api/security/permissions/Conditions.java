@@ -75,10 +75,14 @@ public final class Conditions {
                 logger.trace("Condition {} is cached and {}", this, cachedResult);
                 return cachedResult;
             } else {
+                try {
                 boolean result = this.internalEval(requestManager, securityFacade);
                 logger.trace("Condition {} is not cached and {}", this, result);
                 requestManager.registerConditionResult(this, result);
                 return result;
+                } catch(Throwable ttt) {
+                    return false;
+                }
             }
         }
 

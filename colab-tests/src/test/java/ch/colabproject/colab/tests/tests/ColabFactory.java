@@ -12,6 +12,7 @@ import ch.colabproject.colab.api.model.card.CardType;
 import ch.colabproject.colab.api.model.document.Block;
 import ch.colabproject.colab.api.model.document.BlockDocument;
 import ch.colabproject.colab.api.model.document.Document;
+import ch.colabproject.colab.api.model.document.ExternalLink;
 import ch.colabproject.colab.api.model.document.Resource;
 import ch.colabproject.colab.api.model.link.ActivityFlowLink;
 import ch.colabproject.colab.api.model.project.Project;
@@ -231,6 +232,24 @@ public class ColabFactory {
     }
 
     /**
+     * Create a basic resource for test purpose
+     *
+     * @param client          rest client to execute HTTP requests
+     * @param cardTypeOrRefId the id of the abstract card type possessor of the resource
+     *
+     * @return the id of freshly created document
+     */
+    public static Long createCardTypeResource(ColabClient client, Long cardTypeOrRefId) {
+        ResourceCreationBean resourceToCreate = new ResourceCreationBean();
+        ExternalLink doc = new ExternalLink();
+        doc.setUrl("www.littlesun.test/doc.pdf");
+        resourceToCreate.setDocument(doc);
+        resourceToCreate.setAbstractCardTypeId(cardTypeOrRefId);
+
+        return client.resourceRestEndpoint.createResource(resourceToCreate);
+    }
+
+    /**
      * Create a resource block document for a card type for test purpose
      *
      * @param client     rest client to execute HTTP requests
@@ -252,6 +271,24 @@ public class ColabFactory {
     }
 
     /**
+     * Create a basic resource for test purpose
+     *
+     * @param client rest client to execute HTTP requests
+     * @param cardId the id of the card possessor of the resource
+     *
+     * @return the id of freshly created document
+     */
+    public static Long createCardResource(ColabClient client, Long cardId) {
+        ResourceCreationBean resourceToCreate = new ResourceCreationBean();
+        ExternalLink doc = new ExternalLink();
+        doc.setUrl("www.littlesun.test/doc.pdf");
+        resourceToCreate.setDocument(doc);
+        resourceToCreate.setCardId(cardId);
+
+        return client.resourceRestEndpoint.createResource(resourceToCreate);
+    }
+
+    /**
      * Create a resource block document for test purpose
      *
      * @param client rest client to execute HTTP requests
@@ -269,6 +306,24 @@ public class ColabFactory {
         Long id = client.resourceRestEndpoint.createResource(resourceToCreate);
 
         return (Resource) client.resourceRestEndpoint.getAbstractResource(id);
+    }
+
+    /**
+     * Create a basic resource for test purpose
+     *
+     * @param client        rest client to execute HTTP requests
+     * @param cardContentId the id of the card content possessor of the resource
+     *
+     * @return the id of freshly created document
+     */
+    public static Long createCardContentResource(ColabClient client, Long cardContentId) {
+        ResourceCreationBean resourceToCreate = new ResourceCreationBean();
+        ExternalLink doc = new ExternalLink();
+        doc.setUrl("www.littlesun.test/doc.pdf");
+        resourceToCreate.setDocument(doc);
+        resourceToCreate.setCardContentId(cardContentId);
+
+        return client.resourceRestEndpoint.createResource(resourceToCreate);
     }
 
     /**
