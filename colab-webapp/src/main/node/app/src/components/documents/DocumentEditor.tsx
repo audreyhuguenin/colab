@@ -19,6 +19,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Document, entityIs } from 'colab-rest-client';
 import * as React from 'react';
 import * as API from '../../API/api';
+import { useLastInsertedDocId } from '../../selectors/documentSelector';
+import * as DocumentActions from '../../store/documentSlice';
 import { useAppDispatch } from '../../store/hooks';
 import { BlockEditorWrapper } from '../blocks/BlockEditorWrapper';
 import ConfirmDeleteModal from '../common/ConfirmDeleteModal';
@@ -28,6 +30,7 @@ import IconButton from '../common/IconButton';
 import OpenGraphLink from '../common/OpenGraphLink';
 import { EditState } from '../live/LiveEditor';
 import { editableBlockStyle, lightIconButtonStyle, space_S } from '../styling/style';
+import { DocumentContext } from './documentCommonType';
 import DocumentFileEditor from './DocumentFileEditor';
 
 const editingStyle = css({
@@ -45,10 +48,17 @@ const moveBoxStyle = css({
 export interface DocumentEditorProps {
   doc: Document;
   allowEdition: boolean;
+  context: DocumentContext;
 }
 
-export default function DocumentEditor({ doc, allowEdition }: DocumentEditorProps): JSX.Element {
+export default function DocumentEditor({
+  doc,
+  allowEdition,
+  context,
+}: DocumentEditorProps): JSX.Element {
   const dispatch = useAppDispatch();
+
+  const lastInsertedDocId = useLastInsertedDocId(context);
 
   const isTextDataBlock = entityIs(doc, 'TextDataBlock');
   const isDocumentFile = entityIs(doc, 'DocumentFile');
@@ -60,10 +70,20 @@ export default function DocumentEditor({ doc, allowEdition }: DocumentEditorProp
   const dropRef = React.useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: Event) => {
-    if (dropRef.current && !dropRef.current.contains(event.target as Node)) {
+    if (state === 'EDIT' && dropRef.current && !dropRef.current.contains(event.target as Node)) {
       setState('VIEW');
     }
   };
+
+  React.useEffect(() => {
+    if (lastInsertedDocId === doc.id) {
+      if (state === 'VIEW') {
+        setState('EDIT');
+        dispatch(DocumentActions.resetLastInsertedDocId({ context }));
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [doc.id, lastInsertedDocId]); // no need to wake up when the state changes
 
   React.useEffect(() => {
     document.addEventListener('click', handleClickOutside, true);
